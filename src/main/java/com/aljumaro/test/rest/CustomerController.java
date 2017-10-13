@@ -4,6 +4,7 @@ import java.net.URI;
 import java.util.Collection;
 
 import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -44,7 +45,7 @@ public class CustomerController {
 		//@formatter:on
 	}
 
-	@GetMapping
+	@GetMapping(produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	ResponseEntity<Collection<Customer>> findAll() {
 		return ResponseEntity.ok(this.customerService.findAll());
 	}
