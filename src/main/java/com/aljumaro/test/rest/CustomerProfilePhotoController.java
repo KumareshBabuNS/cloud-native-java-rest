@@ -62,8 +62,10 @@ public class CustomerProfilePhotoController {
 		log.info(String.format("upload-start /customers/%s/photo (%s bytes)", id, file.getSize()));
 
 		return () -> this.customerService.findById(id).map(customer -> {
-			File fileForCustomer = fileFor(customer);
-			try (InputStream in = file.getInputStream(); OutputStream out = new FileOutputStream(fileForCustomer)) {
+			try {
+				File fileForCustomer = fileFor(customer);
+				InputStream in = file.getInputStream();
+				OutputStream out = new FileOutputStream(fileForCustomer);
 				FileCopyUtils.copy(in, out);
 			} catch (IOException ex) {
 				throw new RuntimeException(ex);
@@ -74,7 +76,7 @@ public class CustomerProfilePhotoController {
 		}).orElseThrow(() -> new CustomerNotFoundException(id));
 	}
 
-	private File fileFor(Customer customer) {
-		return new File(this.photo, customer.getId() + ".jpg");
+	private File fileFor(Customer customer) throws IOException {
+		return File.createTempFile("TempFile_" + customer.getId(), ".jpg");
 	}
 }
