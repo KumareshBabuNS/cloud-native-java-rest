@@ -18,7 +18,7 @@ import org.springframework.test.web.servlet.MockMvc;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = CloudNativeJavaRestApplication.class, webEnvironment = WebEnvironment.MOCK)
 @AutoConfigureMockMvc
-public class ApiDocumentation {
+public class ApiTest {
 
 	@Autowired
 	MockMvc mockMvc;
