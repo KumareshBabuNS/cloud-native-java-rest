@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.ResourceHttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.http.converter.protobuf.ProtobufHttpMessageConverter;
 import org.springframework.http.converter.xml.MarshallingHttpMessageConverter;
 import org.springframework.oxm.xstream.XStreamMarshaller;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -20,6 +21,7 @@ public class MVCConfiguration extends WebMvcConfigurerAdapter {
 		converters.add(new MappingJackson2HttpMessageConverter());
 		converters.add(createXmlHttpMessageConverter());
 		converters.add(new ResourceHttpMessageConverter());
+		converters.add(new ProtobufHttpMessageConverter());
 
 		super.configureMessageConverters(converters);
 	}

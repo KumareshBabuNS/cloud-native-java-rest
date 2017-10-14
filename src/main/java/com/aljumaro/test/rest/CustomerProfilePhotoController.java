@@ -12,7 +12,6 @@ import java.util.concurrent.Callable;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.MediaType;
@@ -36,13 +35,10 @@ public class CustomerProfilePhotoController {
 
 	private final Log log = LogFactory.getLog(getClass());
 
-	private File photo;
 	private CustomerService customerService;
 
-	public CustomerProfilePhotoController(@Value("${upload.dir:${user.home}/images}") String uploadDir,
-			CustomerService customerService) {
+	public CustomerProfilePhotoController(CustomerService customerService) {
 		super();
-		this.photo = new File(uploadDir);
 		this.customerService = customerService;
 	}
 

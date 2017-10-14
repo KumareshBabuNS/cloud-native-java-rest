@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package com.aljumaro.test.proto;
+
+option java_package = "com.aljumaro.test.proto";
+
+option java_outer_classname = "CustomerProtos";
+
+message Customer {
+	int64 id = 1;
+	string name = 2;
+	string email = 3;
+}
+
+message Customers {
+	repeated Customer customer = 1;
+}
